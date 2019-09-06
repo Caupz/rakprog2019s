@@ -1,0 +1,23 @@
+
+.container {
+	width: 1024px;
+	margin: 0 auto;
+}
+
+.container > .header-container {
+	display: flex;
+}
+
+.container > .header-container > div {
+	flex: 1;
+	display: inline-block;
+	flex-grow: 1;
+}
+
+.container > .header-container > div:last-child {
+	text-align: right;
+}
+
+.product {
+	display: inline-block;
+}
