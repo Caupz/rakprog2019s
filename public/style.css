@@ -1,3 +1,25 @@
+body {
+	font-family: Verdana, Arial;
+}
+
+a {
+	color: #e01e62;
+	text-decoration: none;
+}
+
+.products {
+	padding-top: 20px;
+}
+
+.product {
+	width: 200px;
+	max-width: 200px;
+	vertical-align: top;
+}
+
+.product img {
+	width: 100%;
+}
 
 .container {
 	width: 1024px;
@@ -5,7 +27,8 @@
 }
 
 .container > .header-container {
-	display: flex;
+    display: flex;
+    border-bottom: 2px solid #EEE;
 }
 
 .container > .header-container > div {
@@ -18,6 +41,32 @@
 	text-align: right;
 }
 
+#search {
+	border: 1px solid #DDD;
+	border-radius: 8px;
+	font-size: 1.3em;
+	vertical-align: middle;
+	margin-right: 55px;
+	padding: 4px 12px;
+	color: #A2A2A2;
+}
+
 .product {
 	display: inline-block;
+}
+
+.logo-container img {
+	height: 60px;
+}
+
+.btns-container a {
+	line-height: 3;
+}
+
+.btns-container a::after {
+    content: " / ";
+}
+
+.btns-container a:last-child::after {
+    content: "";
 }
