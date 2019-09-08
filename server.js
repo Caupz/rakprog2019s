@@ -13,3 +13,12 @@ app.use(express.static('public'))
 app.listen(process.env.PORT || PORT, () => {
   console.log("Server started", PORT);
 });
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://caupo:Solarion1@cluster0-zsibm.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
