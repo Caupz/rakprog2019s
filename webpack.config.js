@@ -1,11 +1,10 @@
 {
-    "mode": "development",
-    "entry": "./src/index.js",
-    "plugins": [
-        new CopyPlugin([
-          {
-            from: "public"
-          }
-        ])
+  "entry": "./src/index.js",
+  "plugins": [
+    new CopyPlugin([
+      {
+        from: "public"
+      }
+    ])
 ]
 }
