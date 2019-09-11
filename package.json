@@ -9,7 +9,7 @@
   "scripts": {
     "heroku-prebuild": "npm install --dev",
     "build": "webpack",
-    "start": "node server",
+    "start": "node server.js",
     "start:dev": "npm run build && npm run start",
     "test": "jest"
   },
