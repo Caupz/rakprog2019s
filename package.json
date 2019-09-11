@@ -4,6 +4,7 @@
   "description": "\"# rakprog2019s\"",
   "main": "index.js",
   "scripts": {
+    "heroku-prebuild": "npm install --dev",
     "build": "webpack",
     "start": "node server",
     "start:dev": "npm run build && npm run start",
