@@ -29,6 +29,9 @@ a {
 .container > .header-container {
     display: flex;
     border-bottom: 2px solid #EEE;
+	position: sticky;
+	top:0;
+	background: #FFF;
 }
 
 .container > .header-container > div {

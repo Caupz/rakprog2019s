@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Avaleht</title>
 <link rel="stylesheet" type="text/css" href="style.css">
+<script src="./bundle.js"></script>
 </head>
 
 <body>
@@ -22,28 +23,12 @@
 			</div>
 		</div>
 		<div class="content">
-			<div class="products">
-				<div class="product">
-					<a href="toode.html?nimi=Seljanka supp&hind=399&imgSrc=/images/keychain.jpg">
-						<img src="/images/keychain.jpg" alt="Tootepilt" />
-						<p class="product-name">Võtmehoidja 1</p>
-						<p class="product-price">€399</p>
-					</a>
-				</div>
-				<div class="product">
-					<a href="toode.html?nimi=Seljanka supp - lihaga&hind=399&imgSrc=/images/keychain.jpg">
-						<img src="/images/keychain.jpg" alt="Tootepilt" />
-						<p class="product-name">Võtmehoidja 2</p>
-						<p class="product-price">€399</p>
-					</a>
-				</div>
-				<div class="product">
-					<a href="toode.html?nimi=Seljanka supp - kukeseentega&hind=399&imgSrc=/images/keychain.jpg">
-						<img src="/images/keychain.jpg" alt="Tootepilt" />
-						<p class="product-name">Võtmehoidja 3</p>
-						<p class="product-price">€399</p>
-					</a>
-				</div>
+			<select class="category">
+				<option value="phones">Phones</option>
+				<option value="laptops">Laptops</option>
+			</select>
+			<div id="item-list" class="products">
+
 			</div>
 		</div>
 	</div>
@@ -52,6 +37,8 @@
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+	<script src="./js/utils.js"></script>
+	<script src="./js/itemsList.js"></script>
 </body>
 
 </html> 
