@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Avaleht</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <title>Tooteleht</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="./js/item.js"></script>
 </head>
 
 <body>
@@ -19,17 +20,13 @@
 			</div>
 		</div>
 		<div class="content">
-			<div class="product">
-				<p>nimi</p>
-				<p>hind</p>
-				<p>add to cart</p>
-			</div>
 		</div>
 	</div>
-	<script>	
-	var searchParams = new URLSearchParams(window.location.search);
-
-	alert("NIMI: "+searchParams.get("nimi")+"\nHIND:"+searchParams.get("hind")+"\nIMG:"+searchParams.get("imgSrc"));
+	<script>
+        window.addEventListener("load", () =>{
+            var searchParams = new URLSearchParams(window.location.search);
+            createProduct(searchParams.get("name"), searchParams.get("description"), searchParams.get("cost"), searchParams.get("imgSrc"));
+        });
 	</script>
 </body>
 
