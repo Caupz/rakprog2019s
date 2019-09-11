@@ -1,8 +1,8 @@
 {
   "name": "safe-crag-23751",
-  "engines": [
+  "engines": {
 	"node": "6.11.1"
-  ],
+  },
   "version": "1.0.0",
   "description": "\"# rakprog2019s\"",
   "main": "index.js",
