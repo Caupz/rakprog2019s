@@ -1,0 +1,1 @@
+C:\Users\Caupz\Documents\Projects\rakprog2019s\node_modules\.bin>babel C:\Users\Caupz\Documents\Projects\rakprog2019s\babel-demo/examples.js --out-dir C:\Users\Caupz\Documents\Projects\rakprog2019s\babel-demo/out
