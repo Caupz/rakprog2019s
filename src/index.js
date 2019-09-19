@@ -1,9 +1,14 @@
-import homepage from "./homepage.js";
-import itempage from "./itempage.js";
-
-console.log("I am index file");
+import React from "react";
+import ReactDOM from "react-dom";
 
 window.addEventListener("load", () =>{
-    homepage.setup();
-    itempage.setup();
+    const node = document.getElementById("app");
+    ReactDOM.render(
+        React.createElement(
+            "button",
+            {},
+            "I am a button, Hello world"
+        ),
+        node,
+    );
 });
