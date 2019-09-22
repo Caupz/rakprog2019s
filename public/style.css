@@ -37,6 +37,10 @@ a {
 	margin: 0 auto;
 }
 
+.header {
+	background: #EEE;
+}
+
 .container > .header-container {
     display: flex;
     border-bottom: 2px solid #EEE;
