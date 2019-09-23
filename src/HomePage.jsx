@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
 import ItemList from "./ItemList.jsx";
 
 class HomePage extends React.PureComponent{
@@ -39,6 +40,7 @@ class HomePage extends React.PureComponent{
                     <option value="laptops">Laptops</option>
                 </select>
                 <ItemList items={this.state.items}/>
+                <Footer/>
                 </div>
             </>
         );

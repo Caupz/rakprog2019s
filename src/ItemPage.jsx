@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
 import {phones} from "./mydatabase.js";
 
 class ItemPage extends React.PureComponent{
@@ -19,6 +20,7 @@ class ItemPage extends React.PureComponent{
                         {item.price}
                     </div>
                 </div>
+                <Footer/>
             </>
         );
     }
