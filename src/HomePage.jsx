@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import ItemList from "./ItemList.jsx";
+import {phones, laptops} from "./mydatabase.js";
 
 class HomePage extends React.PureComponent{
 
@@ -10,7 +11,7 @@ class HomePage extends React.PureComponent{
 
         this.state = {
             items: phones,
-        }
+        };
     }
 
     handleChange = (event) => {
@@ -45,6 +46,6 @@ class HomePage extends React.PureComponent{
             </>
         );
     }
-};
+}
 
 export default HomePage;

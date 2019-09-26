@@ -6,6 +6,6 @@ const Footer = () => {
             Copyrighted by Caupo Helvik
         </div>
     );
-}
+};
 
 export default Footer;

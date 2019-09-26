@@ -24,6 +24,6 @@ class ItemPage extends React.PureComponent{
             </>
         );
     }
-};
+}
 
 export default ItemPage;
