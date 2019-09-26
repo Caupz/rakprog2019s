@@ -8,7 +8,7 @@ const ItemList = (props) => {
             {
                 props.items.map( item => {
                     return <Item
-                        key={item.title}
+                        key={item.id}
                         title={item.title}
                         price={item.price}
                         imgSrc={item.imgSrc}

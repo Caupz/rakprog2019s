@@ -2,7 +2,6 @@ import React from "react";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import ItemList from "./ItemList.jsx";
-import {phones, laptops} from "./mydatabase.js";
 
 class HomePage extends React.PureComponent{
 
@@ -10,12 +9,39 @@ class HomePage extends React.PureComponent{
         super(props);
 
         this.state = {
-            items: phones,
+            items: [],
+            selectedCategory: "phones"
         };
     }
 
-    handleChange = (event) => {
-        switch (event.target.value) {
+    componentDidMount() {
+        this.fetchItems();
+    }
+
+    fetchItems = () => {
+        fetch("/api/items")
+            .then(res => {
+                console.log("res", res);
+                return res.json();
+            })
+            .then(items => {
+                console.log("items", items);
+                this.setState({
+                    items
+                });
+            })
+            .catch(err => {
+                console.log("err", err);
+            });
+    };
+
+    handleDropdown = (event) => {
+        console.log(event.target.value);
+        this.setState({
+            selectedCategory: event.target.value
+        });
+
+        /*switch (event.target.value) {
             case "phones": {
                 this.setState({
                     items: phones
@@ -28,7 +54,11 @@ class HomePage extends React.PureComponent{
                 });
                 break;
             }
-        }
+        }*/
+    };
+
+    getVisibleItems = () => {
+        return this.state.items.filter(item => item.category === this.state.selectedCategory);
     };
 
     render() {
@@ -36,11 +66,11 @@ class HomePage extends React.PureComponent{
             <>
                 <div className={"container"}>
                 <Header/>
-                <select onChange={this.handleChange.bind(this)} className="category">
+                <select onChange={this.handleDropdown.bind(this)} className="category">
                     <option value="phones">Phones</option>
                     <option value="laptops">Laptops</option>
                 </select>
-                <ItemList items={this.state.items}/>
+                <ItemList items={this.getVisibleItems()}/>
                 <Footer/>
                 </div>
             </>
