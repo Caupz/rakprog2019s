@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {userIcon, cartIcon } from "./icons";
+import "./header.css";
 
 const Header = () => {
     return (
@@ -11,6 +13,8 @@ const Header = () => {
             </div>
             <div className="btns-container">
                 <input id="search" placeholder="Otsi..." type="text"/>
+                <img className={"user-icon"} src={userIcon} alt={"User Icon"} />
+                <img className={"cart-icon"} src={cartIcon} alt={"Cart Icon"} />
                 <a href="#">Login</a>
                 <a href="#">Signup</a>
                 <a href="#">Cart</a>
