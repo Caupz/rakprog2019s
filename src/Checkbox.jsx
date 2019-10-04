@@ -1,16 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./checkbox.css";
 
 const Checkbox = ({name, onChange, checked}) => (
-    <div>
-        <label>
-            {name}
-            <input
-                name={name}
-                type={"checkbox"}
-                checked={checked}
-                onChange={onChange} />
-        </label>
+    <div className={"d-inline-block"}>{name}
+        <input className={"tgl tgl-ios"}
+               id={name}
+               name={name}
+               type={"checkbox"}
+               checked={checked}
+               onChange={onChange} />
+
+        <label className="tgl-btn" htmlFor={name}></label>
     </div>
 );
 

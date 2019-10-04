@@ -1,0 +1,7 @@
+.itemFilters-wrapper {
+    display: flex;
+}
+
+.itemFilters-wrapper > div {
+    margin: 0px 10px;
+}

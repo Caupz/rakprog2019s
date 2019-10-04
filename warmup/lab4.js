@@ -8,8 +8,9 @@ const utils = require("./utils");
  * Tip. Peate kasutama Promise ja setTimeout
  */
 const delayHello = new Promise(function(resolve, reject) {
+
     setTimeout(function() {
-        return "hello";
+        resolve("Hello");
     }, 2000);
 });
 

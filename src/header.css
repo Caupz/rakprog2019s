@@ -1,6 +1,16 @@
+
+
 .user-icon {
     height: 32px;
 }
 .cart-icon {
     height: 32px;
 }
+.d-inline-block {
+    display :inline-block;
+}
+
+.container > .header-container {
+    z-index: 1000;
+}
+

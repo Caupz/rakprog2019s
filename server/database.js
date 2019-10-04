@@ -13,17 +13,24 @@ const getItems = () => {
         items.push({
             ...phone,
             id: "phones-"+index,
-            category: "phones"
+            category: "phones",
+            price: cleanPrice(phone.price),
         })
     })
     laptops.forEach( (laptop, index) => {
         items.push({
             ...laptop,
             id: "laptops-"+index,
-            category: "laptops"
+            category: "laptops",
+            price: cleanPrice(laptop.price),
         })
     })
     return items;
+};
+
+const cleanPrice = (dirtyPrice) => {
+    const parts = dirtyPrice.split("to");
+    return parts[0].replace("$", "");
 };
 
 const getItem = (itemId) => {
