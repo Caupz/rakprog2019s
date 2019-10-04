@@ -20,6 +20,9 @@ const isNumberValid = (inputString, {precision = 9, scale = 0}) => {
     let numbersInStr = inputString.replace(/[^0-9]/g,"").length;
     let numberOfScale = decimalPlaces(inputString);
 
+    if(inputString.includes(".") && scale == 0) {
+        return false;
+    }
     return isNr && (numbersInStr < precision) && (numberOfScale <= scale);
 };
 
@@ -42,7 +45,7 @@ utils.test(isNumberValid("200.not",{scale: 0}), false); // not a number
 utils.test(isNumberValid("0",{}), true);
 utils.test(isNumberValid("10.32",{scale: 1}), false);
 utils.test(isNumberValid("10.32",{scale: 3}), true);
-utils.test(isNumberValid("10.",{scale: 3}), false); // not a number
+utils.test(isNumberValid("10.", {scale:0}), false); // not a number
 
 /**
  * Task 2
