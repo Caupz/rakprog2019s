@@ -2,6 +2,7 @@
 
 .header-icon {
     height: 32px;
+    margin-bottom: -10px;
 }
 .d-inline-block {
     display :inline-block;
