@@ -78,7 +78,7 @@
     padding-right: .8em;
 }
 .tgl-ios:checked + .tgl-btn {
-    background: #86d993;
+    background: #e01e62;
 }
 .tgl-ios:checked + .tgl-btn:active {
     box-shadow: none;
