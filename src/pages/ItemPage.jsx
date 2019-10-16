@@ -1,6 +1,5 @@
 import React from "react";
-import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
+import Footer from "../components/Footer.jsx";
 import PropTypes from "prop-types";
 
 class ItemPage extends React.PureComponent{
@@ -34,7 +33,6 @@ class ItemPage extends React.PureComponent{
         return (
             <>
                 <div className={"container"}>
-                <Header/>
                 <div className={"itemContainer"}>
                     <img src={this.state.imgSrc} alt={this.state.title}/>
                     <div className={"item__title"}>

@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {userIcon, cartIcon, loginIcon } from "./icons";
+import {userIcon, cartIcon, loginIcon } from "../icons";
 import "./header.css";
 
 const Header = () => {
     return (
+        <div className={"container"}>
         <div className="header-container">
             <div className="logo-container">
                 <Link to={"/"}>
@@ -18,6 +19,7 @@ const Header = () => {
                 <a href="#"><img className={"header-icon user-icon"} src={userIcon} alt={"User Icon"} />Signup</a>
                 <a href="#"><img className={"header-icon cart-icon"} src={cartIcon} alt={"Cart Icon"} />Cart</a>
             </div>
+        </div>
         </div>
 );
 };

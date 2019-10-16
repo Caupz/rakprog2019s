@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import "./itemlist.css";
 
 const ItemList = (props) => {
     return(
@@ -8,8 +9,8 @@ const ItemList = (props) => {
             {
                 props.items.map( item => {
                     return <Item
-                        key={item.id}
-                        id={item.id}
+                        key={item._id}
+                        id={item._id}
                         title={item.title}
                         price={item.price}
                         imgSrc={item.imgSrc}
@@ -37,7 +38,7 @@ Item.propTypes = {
     id: PropTypes.string.isRequired,
     imgSrc: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired
+    price: PropTypes.number.isRequired
 };
 
 export default ItemList;
