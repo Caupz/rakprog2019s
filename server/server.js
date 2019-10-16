@@ -5,8 +5,9 @@ const PORT = process.env.PORT || 3000;
 const DB = require("./database.js");
 const mongoose = require("mongoose");
 require('dotenv').config();
-const itemRouter = require("./item.js");
+const itemRouter = require("./item.router.js");
 const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-zsibm.gcp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const Item = require("./item.model.js");
 
 app.use(itemRouter);
 
@@ -30,6 +31,8 @@ function listen() {
 mongoose.connect(DB_URL)
     .then(() => {
         console.log("DB Access success");
+        migrate();
+        //deleteAllItems();
         listen();
     })
     .catch(err => {
@@ -44,3 +47,49 @@ client.connect(err => {
   // perform actions on the collection object
   client.close();
 });*/
+
+/*
+* Cons: Unclear when all products are saved
+* */
+function migrate() {
+    console.log("Checking item counts.");
+
+    Item.count({}, (err, itemCount) => {
+        if(err) throw err;
+        if(itemCount > 0) {
+            console.log("Items exist, skipping item migration.");
+            return;
+        }
+        console.log("Items missing so creating them.");
+        saveAllItems();
+    });
+}
+
+function deleteAllItems() {
+    Item.deleteMany({}, (err, doc) => {
+       console.log("err", err, "doc", doc);
+    });
+}
+
+function saveAllItems() {
+    console.log("migrate started");
+    let itemSaved = 0;
+    const items = DB.getItems();
+
+    items.forEach(item => {
+        const document = new Item(item);
+        document.save((err) => {
+            itemSaved++;
+
+            if(itemSaved == items.length) {
+                console.log("All items saved more or less.");
+            }
+
+            if(err) {
+                console.log(err);
+                throw new Error("Something happened during save");
+            }
+            console.log("Save success");
+        })
+    });
+}
