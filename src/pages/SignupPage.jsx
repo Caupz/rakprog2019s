@@ -1,5 +1,6 @@
 import React from "react";
 import "./form.css";
+import { Link } from "react-router-dom";
 
 class SignupPage extends React.PureComponent {
 
@@ -15,6 +16,19 @@ class SignupPage extends React.PureComponent {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log("Submit", e, this.state);
+        fetch("/api/users/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then(res => {
+            console.log("response", res);
+        })
+        .catch(err => {
+            console.log("error", err);
+        });
     };
 
     handleChange = (e) => {
@@ -54,7 +68,7 @@ class SignupPage extends React.PureComponent {
                     <p>
                         <input type="submit" value="Create" />
                     </p>
-                    <a href={"/login"}>Already registered? Login</a>
+                    <Link to={"/login"}>Already registered? Login</Link>
                 </form>
             </div>
         );
