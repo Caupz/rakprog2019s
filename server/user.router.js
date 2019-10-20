@@ -15,7 +15,7 @@ router.get("/api/users", (req,res) => {
 
 /*
 * Logins user
-* */
+* *//*
 router.post("/api/users/login", (req, res) => {
     User.login(req.body)
         .then(user => {
@@ -24,15 +24,11 @@ router.post("/api/users/login", (req, res) => {
         .catch(err => {
             return handleError(err, res);
         })
-    /*User.findOne({email: req.body.email}, (err, doc) => {
-        if(err) return handleError(err, res);
-        res.send(doc);
-    })*/
-});
+});*/
 
 /*
 * Creates a new user (signup)
-* */
+* *//*
 router.post("/api/users/signup", (req, res) => {
     User.signup(req.body)
         .then(user => {
@@ -41,7 +37,7 @@ router.post("/api/users/signup", (req, res) => {
         .catch(err => {
             return handleError(err, res);
         });
-});
+});*/
 
 /*
 * Deletes all users

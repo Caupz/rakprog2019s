@@ -6,7 +6,7 @@ const DB = require("./database.js");
 const mongoose = require("mongoose");
 const itemRouter = require("./item.router.js");
 const userRouter = require("./user.router.js");
-const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-zsibm.gcp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const authRouter = require("./auth.router.js");
 const Item = require("./item.model.js");
 const bodyParser = require("body-parser");
 
@@ -14,9 +14,13 @@ if(process.env.NODE_ENV !== "production") {
     require('dotenv').config();
 }
 
+const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-zsibm.gcp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+
 app.use(bodyParser.json());
-app.use(itemRouter);
-app.use(userRouter);
+
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/", itemRouter);
+app.use("/api/v1/", userRouter);
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
@@ -35,7 +39,7 @@ function listen() {
     });
 }
 
-mongoose.connect(DB_URL, { useNewUrlParser: true })
+mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("DB Access success");
         migrate();
