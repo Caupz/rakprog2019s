@@ -1,14 +1,17 @@
 import React from "react";
 import "./form.css";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class SignupPage extends React.PureComponent {
+    static propTypes = {
+        history: PropTypes.object.isRequired,
+    };
 
     constructor(props) {
         super(props);
         this.state = {
             password: "",
-            passwordConfirm: "",
             email:""
         };
     }
@@ -23,8 +26,10 @@ class SignupPage extends React.PureComponent {
             },
             body: JSON.stringify(this.state)
         })
-        .then(res => {
-            console.log("response", res);
+        .then(res => res.json())
+        .then(data => {
+            console.log("response handleSubmit", data);
+            this.props.history.push("/login");
         })
         .catch(err => {
             console.log("error", err);
@@ -39,6 +44,8 @@ class SignupPage extends React.PureComponent {
 
     render() {
         return (
+            <>
+            <h1>Signup</h1>
             <div className={"form"}>
                 <form onSubmit={this.handleSubmit}>
                     <p>
@@ -58,19 +65,12 @@ class SignupPage extends React.PureComponent {
                             onChange={this.handleChange} />
                     </p>
                     <p>
-                        <input
-                            placeholder={"Confirm password"}
-                            name="passwordConfirm"
-                            type={"password"}
-                            value={this.state.passwordConfirm}
-                            onChange={this.handleChange} />
-                    </p>
-                    <p>
                         <input type="submit" value="Create" />
                     </p>
                     <Link to={"/login"}>Already registered? Login</Link>
                 </form>
             </div>
+            </>
         );
     }
 }

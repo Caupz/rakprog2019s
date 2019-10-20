@@ -29,3 +29,10 @@ E-poe funktsionaalsused
 18. Kasutaja saab muuta oma emaili  
 19. Kasutaja saab muuta oma parooli  
 20. Kasutaja saab vaadata oma tellimusi  
+---------
+
+env faili variabled:  
+DB_USER  
+DB_PASS  
+DB_NAME  
+JWT_KEY  
