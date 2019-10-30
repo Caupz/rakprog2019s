@@ -3,32 +3,31 @@ import { Link } from "react-router-dom";
 import {userIcon, cartIcon, loginIcon } from "../icons";
 import "./header.css";
 import PropTypes from "prop-types";
-import {AuthContext} from "../index.jsx";
+import authConsumer from "./authConsumer.jsx";
 
-const Header = () => {
+const Header = ({user}) => {
     return (
-        <AuthContext.Consumer>
-            {
-                (contextValue) => (
-                    <div className={"container"}>
-                        <div className="header-container">
-                            <div className="logo-container">
-                                <Link to={"/"}>
-                                    <img src="http://gtav.ee/gtaveelogo.png" alt="GTAV.ee Logo"/>
-                                </Link>
-                            </div>
-                            <div className="btns-container">
-                                <input id="search" placeholder="Otsi..." type="text"/>
-                                {contextValue.user.email && <WelcomeIcon user={contextValue.user}/>}
-                                {!contextValue.user.email && <LoginRegisterIcon />}
-                                <a href="#"><img className={"header-icon cart-icon"} src={cartIcon} alt={"Cart Icon"} />Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                )
-            }
-        </AuthContext.Consumer>
+        <div className={"container"}>
+            <div className="header-container">
+                <div className="logo-container">
+                    <Link to={"/"}>
+                        <img src="http://gtav.ee/gtaveelogo.png" alt="GTAV.ee Logo"/>
+                    </Link>
+                </div>
+                <div className="btns-container">
+                    <input id="search" placeholder="Otsi..." type="text"/>
+                    {user.email && <WelcomeIcon user={user}/>}
+                    {!user.email && <LoginRegisterIcon />}
+                    <a href="#"><img className={"header-icon cart-icon"} src={cartIcon} alt={"Cart Icon"} />Cart</a>
+                </div>
+            </div>
+        </div>
     );
+};
+
+Header.propTypes = {
+    token: PropTypes.string,
+    user: PropTypes.object,
 };
 
 const LoginRegisterIcon = () => (
@@ -51,4 +50,4 @@ WelcomeIcon.propTypes = {
     user: PropTypes.object,
 };
 
-export default Header;
+export default authConsumer(Header);

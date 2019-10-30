@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import authConsumer from "../components/authConsumer.jsx";
 
 class UserPage extends React.PureComponent {
     static propTypes = {
         user: PropTypes.object.isRequired,
-    }
+    };
 
     render() {
         return (
@@ -15,4 +16,4 @@ class UserPage extends React.PureComponent {
     }
 }
 
-export default UserPage;
+export default authConsumer(UserPage);
