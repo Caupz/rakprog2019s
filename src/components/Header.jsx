@@ -18,7 +18,7 @@ const Header = ({user}) => {
                     <input id="search" placeholder="Otsi..." type="text"/>
                     {user.email && <WelcomeIcon user={user}/>}
                     {!user.email && <LoginRegisterIcon />}
-                    <a href="#"><img className={"header-icon cart-icon"} src={cartIcon} alt={"Cart Icon"} />Cart</a>
+                    <Link to={"/checkout/cart"}><img className={"header-icon cart-icon"} src={cartIcon} alt={"Cart Icon"} />Cart</Link>
                 </div>
             </div>
         </div>
