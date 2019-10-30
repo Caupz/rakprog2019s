@@ -56,7 +56,7 @@ class HomePage extends React.PureComponent{
 
     unselectCategory = (categoryName) => {
         const newArr = this.state.selectedCategories.filter(cn => cn !== categoryName);
-        
+
         this.setState({
             selectedCategories: newArr
         });
