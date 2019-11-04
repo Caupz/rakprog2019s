@@ -1,11 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 
 *{
-	font-family: 'Quicksand', sans-serif;
-}
-
-body {
-	font-family: Verdana, Arial;
+	font-family: 'Quicksand', Verdana, Arial;
 }
 
 a {

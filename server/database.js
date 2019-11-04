@@ -1,15 +1,24 @@
+if(process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
 const DB = require("./database.js");
 const mongoose = require("mongoose");
 const Item = require("./item.model.js");
-const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-zsibm.gcp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+
+const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-zsibm.gcp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority&authSource=admin&w=1`;
 
 const connect = () => {
-    return mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    return mongoose.connect(DB_URL,
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
         .then(() => {
             console.log("DB Access success");
             migrate();
             //deleteAllItems();
-            listen();
+            return true;
         })
         .catch(err => {
             console.log("DB Access error: ", err);
