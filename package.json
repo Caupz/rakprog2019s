@@ -11,7 +11,9 @@
     "heroku-prebuild": "npm install --dev",
     "build": "webpack",
     "start": "node server/server.js",
-    "start:dev": "webpack-dev-server --open --mode=\"development\"",
+    "start:prelive": "npm run build && set PORT=3001 npm run start",
+    "backend": "nodemon server/server.js",
+    "frontend": "webpack-dev-server --open --mode=\"development\"",
     "test": "jest",
     "lint": "eslint **/*.{js,jsx}"
   },
@@ -37,6 +39,7 @@
     "lodash": "^4.17.15",
     "mongodb": "^3.3.2",
     "mongoose": "^5.7.3",
+    "nodemon": "^1.19.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-icons": "^3.8.0",

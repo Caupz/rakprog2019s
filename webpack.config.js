@@ -15,6 +15,12 @@ module.exports = {
                 from: "public"
             }
         ]),
+        new CopyPlugin([
+            {
+                from: "public/images",
+                to: "static/images"
+            }
+        ]),
         new CleanWebpackPlugin(),
     ],
     module: {

@@ -1,3 +1,20 @@
+const DB = require("./database.js");
+const mongoose = require("mongoose");
+const Item = require("./item.model.js");
+const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-zsibm.gcp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+
+const connect = () => {
+    return mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+        .then(() => {
+            console.log("DB Access success");
+            migrate();
+            //deleteAllItems();
+            listen();
+        })
+        .catch(err => {
+            console.log("DB Access error: ", err);
+        });
+};
 
 const laptops = [{
     "imgSrc":"https://i.ebayimg.com/thumbs/images/m/mTdFwtXG8gkjDDQVNn_D0xQ/s-l225.jpg",
@@ -16,7 +33,7 @@ const getItems = () => {
             category: "phones",
             price: cleanPrice(phone.price),
         })
-    })
+    });
     laptops.forEach( (laptop, index) => {
         items.push({
             ...laptop,
@@ -24,7 +41,7 @@ const getItems = () => {
             category: "laptops",
             price: cleanPrice(laptop.price),
         })
-    })
+    });
     return items;
 };
 
@@ -38,5 +55,52 @@ const getItem = (itemId) => {
 };
 
 module.exports = {
-    getItems, getItem
+    getItems, getItem, connect
 };
+
+
+/*
+* Cons: Unclear when all products are saved
+* */
+function migrate() {
+    console.log("Checking item counts.");
+
+    Item.count({}, (err, itemCount) => {
+        if(err) throw err;
+        if(itemCount > 0) {
+            console.log("Items exist, skipping item migration.");
+            return;
+        }
+        console.log("Items missing so creating them.");
+        saveAllItems();
+    });
+}
+
+function deleteAllItems() {
+    Item.deleteMany({}, (err, doc) => {
+        console.log("err", err, "doc", doc);
+    });
+}
+
+function saveAllItems() {
+    console.log("migrate started");
+    let itemSaved = 0;
+    const items = DB.getItems();
+
+    items.forEach(item => {
+        const document = new Item(item);
+        document.save((err) => {
+            itemSaved++;
+
+            if(itemSaved == items.length) {
+                console.log("All items saved more or less.");
+            }
+
+            if(err) {
+                console.log(err);
+                throw new Error("Something happened during save");
+            }
+            console.log("Save success");
+        })
+    });
+}

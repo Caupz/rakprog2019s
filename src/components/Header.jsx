@@ -11,7 +11,7 @@ const Header = ({user}) => {
             <div className="header-container">
                 <div className="logo-container">
                     <Link to={"/"}>
-                        <img src="http://gtav.ee/gtaveelogo.png" alt="GTAV.ee Logo"/>
+                        <img src="/static/images/gtaveelogo.png" alt="GTAV.ee Logo"/>
                     </Link>
                 </div>
                 <div className="btns-container">
