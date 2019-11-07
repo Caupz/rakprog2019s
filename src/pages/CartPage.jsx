@@ -5,10 +5,12 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import "../components/cart.css";
 import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
+import {removeItem} from "../store/store";
 
 class CartPage extends React.PureComponent {
     static propTypes = {
-        cart: PropTypes.arrayOf(PropTypes.shape(ItemProps)).isRequired
+        cart: PropTypes.arrayOf(PropTypes.shape(ItemProps)).isRequired,
+        dispatch: PropTypes.func.isRequired,
     };
 
     calcNumbers = () => {
@@ -20,6 +22,10 @@ class CartPage extends React.PureComponent {
         };
     };
 
+    handleTrash = (_id) => {
+        this.props.dispatch(removeItem(_id));
+    };
+
     render() {
         const {sum, tax} = this.calcNumbers();
 
@@ -28,6 +34,7 @@ class CartPage extends React.PureComponent {
             <div className={"spacer"}>
                 <div className={"box cart"}>
                     <Table
+                        onTrashClick={this.handleTrash}
                         rows={this.props.cart}
                     />
                 </div>
@@ -52,7 +59,7 @@ class CartPage extends React.PureComponent {
     }
 }
 
-const Table = ({rows}) => {
+const Table = ({rows, onTrashClick}) => {
     return(
         <div className={"table"}>
             <div className={"row"}>
@@ -62,16 +69,17 @@ const Table = ({rows}) => {
                 <div className={"cell cell--right"}>Summa</div>
                 <div className={"cell cell--small"}></div>
             </div>
-            {rows.map((row) => <Row key={row._id} {...row} />)}
+            {rows.map((row, index) => <Row onTrashClick={onTrashClick} key={index} {...row} />)}
         </div>
     );
 };
 
 Table.propTypes = {
     rows: PropTypes.array.isRequired,
+    onTrashClick: PropTypes.func.isRequired,
 };
 
-const Row = ({title, imgSrc, category, price}) => {
+const Row = ({_id, title, imgSrc, category, price, onTrashClick}) => {
     return (
         <div className={"row content"}>
             <div className={"cell"}>
@@ -87,7 +95,11 @@ const Row = ({title, imgSrc, category, price}) => {
                 {price} €
             </div>
             <div className={"cell cell--small cell--center"}>
-                <FaRegTrashAlt/>
+                <FaRegTrashAlt
+                    title={"Eemalda"}
+                    className={"trash-btn"}
+                    onClick={() => onTrashClick(_id)}
+                />
             </div>
 
         </div>
@@ -102,7 +114,10 @@ export const ItemProps = {
     price: PropTypes.number.isRequired,
 };
 
-Row.propTypes = ItemProps;
+Row.propTypes = {
+    ...ItemProps,
+    onTrash: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (store) => {
     return {

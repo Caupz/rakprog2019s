@@ -1,11 +1,18 @@
-import {createStore} from "redux";
+import { applyMiddleware, createStore} from "redux";
+//import thunk from "redux-thunk";
+import logger from "redux-logger";
 
 /*const USER_SUCCESS = "USER_SUCCESS";
 const USER_REQUEST = "USER_REQUEST";
 const USER_FAILURE = "USER_FAILURE";
 */
 const ITEM_ADDED = "ITEM_ADDED";
-//const ITEM_REMOVED = "ITEM_REMOVED";
+const ITEM_REMOVED = "ITEM_REMOVED";
+
+export const removeItem = (_id) => ({
+    type: ITEM_REMOVED,
+    payload: _id,
+});
 
 export const addItem = (item) => ({
     type: ITEM_ADDED,
@@ -26,6 +33,12 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case ITEM_REMOVED: {
+            return {
+                ...state,
+                cart: removeItemById(state.cart, action.payload)
+            };
+        }
         case ITEM_ADDED: {
             return {
                 ...state,
@@ -38,7 +51,15 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(logger));
 store.subscribe(() => console.log(store.getState()));
 
 export default store;
+
+const removeItemById = (items, _id) => {
+    const index = items.findIndex(item => item._id === _id);
+    if(index === -1) return items;
+    const copy = items.slice();
+    copy.splice(index, 1);
+    return copy;
+};

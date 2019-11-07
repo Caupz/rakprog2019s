@@ -14,3 +14,15 @@ input {
     border-top-right-radius: 4px;
     color: #FFF;
 }
+
+.badge {
+    position: absolute;
+    right: 40px;
+    top: 12px;
+    background:
+            #FFF;
+    height: 6px;
+    line-height: 0;
+    padding: 1px;
+    border-radius: 50%;
+}
