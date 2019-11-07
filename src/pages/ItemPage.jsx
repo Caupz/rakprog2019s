@@ -3,8 +3,14 @@ import Footer from "../components/Footer.jsx";
 import PropTypes from "prop-types";
 import "./itempage.css";
 import FancyButton from "../components/FancyButton.jsx";
+import {connect} from "react-redux";
+import {addItem} from "../store/store";
 
 class ItemPage extends React.PureComponent{
+
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired
+    };
 
     constructor(props) {
         super(props);
@@ -31,6 +37,10 @@ class ItemPage extends React.PureComponent{
             });
     };
 
+    handleBuy = () => {
+        this.props.dispatch(addItem(this.state._id));
+    };
+
     render() {
         return (
             <>
@@ -44,7 +54,7 @@ class ItemPage extends React.PureComponent{
                         <div className={"item__price"}>
                             {this.state.price}
                         </div>
-                        <FancyButton onClick={()=>0}>Osta</FancyButton>
+                        <FancyButton onClick={this.handleBuy}>Osta</FancyButton>
                         </div>
                     </div>
 
@@ -59,4 +69,4 @@ ItemPage.propTypes = {
     match: PropTypes.object.isRequired,
 };
 
-export default ItemPage;
+export default connect()(ItemPage);
