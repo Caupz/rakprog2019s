@@ -7,9 +7,9 @@ const USER_FAILURE = "USER_FAILURE";
 const ITEM_ADDED = "ITEM_ADDED";
 //const ITEM_REMOVED = "ITEM_REMOVED";
 
-export const addItem = (_id) => ({
+export const addItem = (item) => ({
     type: ITEM_ADDED,
-    payload: _id,
+    payload: item,
 });
 
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
         token: null,
     },
     cart: [
-        //some-id-123
+        //item
     ],
 
 };
