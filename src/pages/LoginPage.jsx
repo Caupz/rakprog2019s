@@ -48,6 +48,7 @@ class LoginPage extends React.PureComponent {
     render() {
         return (
             <>
+            <div className={"container"}>
             <h1>Login</h1>
             <div className={"form"}>
             <form onSubmit={this.handleSubmit}>
@@ -68,10 +69,11 @@ class LoginPage extends React.PureComponent {
                         onChange={this.handleChange} />
                 </p>
                 <p>
-                    <input type="submit" value="Login" />
+                    <input className={"btn btn--fancy"} type="submit" value="Login" />
                 </p>
                 <Link to={"/signup"}>Not registered? Create an account</Link>
             </form>
+            </div>
             </div>
             </>
         );

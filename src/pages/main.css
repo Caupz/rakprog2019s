@@ -1,0 +1,16 @@
+input {
+    padding: 8px 4px;
+    border-radius: 4px;
+    border: 1px solid #AAA;
+    min-width: 200px;
+}
+
+.footer-container {
+    position: fixed;
+    bottom: 0;
+    background: #e01e62;
+    padding: 4px 8px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: #FFF;
+}

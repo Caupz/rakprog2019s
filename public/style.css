@@ -22,15 +22,14 @@ a {
 	vertical-align: top;
 	display: inline-block;
 	border: 1px solid #C5C5C5;
-	border-radius: 4px;
-	padding: 4px;
 	margin: 4px;
 	min-height: 400px;
 }
 
 .product img {
-	width: 100%;
-	max-height: 200px;
+    height: 150px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .product-cost {
@@ -57,6 +56,26 @@ a {
 .container > .header-container > div {
 	display: inline-block;
 	flex-grow: 1;
+}
+
+.product-title, .product-cost {
+    padding: 0px 8px;
+    text-align: justify;
+    color: #000;
+}
+
+.product-content {
+    position: relative;
+    width: 100%;
+    min-width: 200px;
+    text-align: center;
+}
+
+.product-cost {
+    text-align: center;
+    font-size: 2em;
+    background: #e01e62;
+    color: #FFF;
 }
 
 .container > .header-container > div:last-child {

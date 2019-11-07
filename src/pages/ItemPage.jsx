@@ -37,15 +37,17 @@ class ItemPage extends React.PureComponent{
                 <div className={"container"}>
                     <div className={"itemContainer"}>
                         <img src={this.state.imgSrc} alt={this.state.title}/>
+                        <div>
                         <div className={"item__title"}>
                             {this.state.title}
                         </div>
                         <div className={"item__price"}>
                             {this.state.price}
                         </div>
+                        <FancyButton onClick={()=>0}>Osta</FancyButton>
+                        </div>
                     </div>
 
-                    <FancyButton onClick={()=>0}>Osta</FancyButton>
                     <Footer/>
                 </div>
             </>

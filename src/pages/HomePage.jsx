@@ -84,7 +84,6 @@ class HomePage extends React.PureComponent{
         const items = this.getVisibleItems();
         return (
             <>
-                hello
                 <div className={"container"}>
                     <ItemFilters
                         allCategories={this.state.allCategories}

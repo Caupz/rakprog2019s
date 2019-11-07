@@ -1,3 +1,11 @@
+.btn {
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    min-width: 150px;
+    text-align: center;
+}
+
 .btn.btn--fancy {
     background: #e01e62;
     color: #FFF;

@@ -58,6 +58,7 @@
     visibility: hidden;
     pointer-events: none;
     transform: translateY(-15px);
+    z-index: 1;
 }
 .custom-select-sources.opened .custom-options {
     opacity: 1;

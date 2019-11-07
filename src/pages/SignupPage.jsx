@@ -45,6 +45,7 @@ class SignupPage extends React.PureComponent {
     render() {
         return (
             <>
+            <div className={"container"}>
             <h1>Signup</h1>
             <div className={"form"}>
                 <form onSubmit={this.handleSubmit}>
@@ -65,10 +66,11 @@ class SignupPage extends React.PureComponent {
                             onChange={this.handleChange} />
                     </p>
                     <p>
-                        <input type="submit" value="Create" />
+                        <input className={"btn btn--fancy"} type="submit" value="Create" />
                     </p>
                     <Link to={"/login"}>Already registered? Login</Link>
                 </form>
+            </div>
             </div>
             </>
         );

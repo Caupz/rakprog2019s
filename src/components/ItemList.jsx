@@ -28,8 +28,11 @@ ItemList.propTypes = {
 const Item = (props) => {
     return(
         <Link  className="product" to={`/items/${props.id}`}>
-            <img alt={props.title} src={props.imgSrc} className="product-image" />
-            <p className="product-title">{props.title}</p><p className="product-cost">{props.price}</p>
+            <div className={"product-content"}>
+                <img alt={props.title} src={props.imgSrc} className="product-image" />
+                <p className="product-cost">{props.price}</p>
+                <p className="product-title">{props.title}</p>
+            </div>
         </Link>
     );
 };

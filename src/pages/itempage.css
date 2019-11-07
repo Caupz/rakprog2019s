@@ -1,0 +1,16 @@
+.itemContainer > div, .itemContainer > img {
+    display: inline-block;
+}
+
+.itemContainer > div {
+    width: 400px;
+    vertical-align: top;
+    padding-top: 10px;
+}
+
+.item__price {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}

@@ -25,6 +25,7 @@ class CartPage extends React.PureComponent {
 
     render() {
         return (
+            <div className={"container"}>
             <div className={"spacer"}>
                 <div className={"box cart"}>
                     <Table
@@ -46,6 +47,7 @@ class CartPage extends React.PureComponent {
                         </tbody>
                     </table>
                 </div>
+            </div>
             </div>
         );
     }
@@ -72,7 +74,7 @@ Table.propTypes = {
 
 const Row = ({title, imgSrc, category, price}) => {
     return (
-        <div className={"row"}>
+        <div className={"row content"}>
             <div className={"cell"}>
                 <img src={imgSrc} />
             </div>
