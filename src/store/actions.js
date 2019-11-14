@@ -5,6 +5,7 @@ export const ITEMS_FAILURE = "ITEMS_FAILURE";
 export const ITEM_ADDED = "ITEM_ADDED";
 export const ITEM_REMOVED = "ITEM_REMOVED";
 export const USER_UPDATE = "USER_UPDATE";
+export const TOKEN_UPDATE = "TOKEN_UPDATE";
 
 /*const USER_SUCCESS = "USER_SUCCESS";
 const USER_REQUEST = "USER_REQUEST";
@@ -50,4 +51,9 @@ export const addItem = (item) => ({
 export const userUpdate = (user) => ({
     type: USER_UPDATE,
     payload: user
+});
+
+export const tokenUpdate = token => ({
+    type: TOKEN_UPDATE,
+    payload: token
 });
