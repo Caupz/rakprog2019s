@@ -5,7 +5,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import "../components/cart.css";
 import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
-import {removeItem} from "../store/store";
+import {removeItem} from "../store/actions";
 
 class CartPage extends React.PureComponent {
     static propTypes = {
