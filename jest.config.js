@@ -11,7 +11,7 @@ module.exports = {
   // Respect "browser" field in package.json when resolving modules
   // browser: false,
 
-  // The directory where Jest should configureStore its cached dependency information
+  // The directory where Jest should store its cached dependency information
   // cacheDirectory: "C:\\Users\\helvi\\AppData\\Local\\Temp\\jest",
 
   // Automatically clear mock calls and instances between every test

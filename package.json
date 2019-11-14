@@ -45,7 +45,6 @@
     "react-icons": "^3.8.0",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
-    "redux-persist": "^6.0.0",
     "typeface-quicksand": "0.0.71",
     "webpack-cli": "^3.3.8"
   },

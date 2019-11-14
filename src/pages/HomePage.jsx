@@ -5,7 +5,7 @@ import Checkbox from "../components/Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
 import SortDropdown from "../components/SortDropdown.jsx";
-import {getItems} from "../store/actions";
+import {getItems} from "../actions/itemsActions.js";
 
 class HomePage extends React.PureComponent{
 
