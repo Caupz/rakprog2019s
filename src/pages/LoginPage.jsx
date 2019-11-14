@@ -3,6 +3,7 @@ import "./form.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {toast} from "react-toastify";
 
 class LoginPage extends React.PureComponent {
 
@@ -33,14 +34,12 @@ class LoginPage extends React.PureComponent {
         .then(this.handleSuccess)
         .catch(err => {
             console.log("error", err);
+            toast.error("Login failed");
         });
     };
 
     handleSuccess = ({user}) => {
         this.props.dispatch(userUpdate(user));
-
-        /*console.log("response", token, user);
-        this.props.onLogin({token, user});*/
         this.props.history.push(`/users/${user._id}`);
     };
 
