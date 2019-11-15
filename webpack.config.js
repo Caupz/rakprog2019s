@@ -7,7 +7,7 @@ module.exports = {
     entry: "./src/index.jsx",
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: 'bundle.js'
+      filename: 'static/bundle.js'
     },
     devtool: "eval-source-map",
     plugins: [
@@ -20,6 +20,12 @@ module.exports = {
             {
                 from: "public/images",
                 to: "static/images"
+            }
+        ]),
+        new CopyPlugin([
+            {
+                from: "public/style.css",
+                to: "static/style.css"
             }
         ]),
         new CleanWebpackPlugin(),
@@ -49,10 +55,16 @@ module.exports = {
               use: [
                   {
                       loader: "file-loader",
+                      options: {
+                          outputPath: "static/fonts"
+                      }
                   }
               ]
           }
       ]
+    },
+    resolve: {
+        extensions: [".js", ".jsx"],
     },
     devServer: {
         historyApiFallback: true,

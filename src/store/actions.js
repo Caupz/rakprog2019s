@@ -15,7 +15,7 @@ const USER_FAILURE = "USER_FAILURE";
 export const getItems = () => (dispatch, getState) => {
     if(getState().items.length > 0) return null;
 
-    dispatch(itemsRequest());
+    //dispatch(itemsRequest());
     return fetch("/api/v1/items")
         .then(res => {
             return res.json();
@@ -29,7 +29,7 @@ export const getItems = () => (dispatch, getState) => {
         });
 };
 
-export const itemsSuccess = () => ({
+export const itemsSuccess = (items) => ({
     type: ITEMS_SUCCESS,
     payload: items,
 });

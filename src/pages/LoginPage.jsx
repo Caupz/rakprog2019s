@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {toast} from "react-toastify";
+import {userUpdate} from "../store/actions";
 
 class LoginPage extends React.PureComponent {
 

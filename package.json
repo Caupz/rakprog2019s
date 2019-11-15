@@ -11,7 +11,7 @@
     "heroku-prebuild": "npm install --dev",
     "build": "webpack",
     "start": "node server/server.js",
-    "start:prelive": "npm run build && set PORT=3001 npm run start",
+    "start:prelive": "npm run build && set PORT=3001 && npm run start",
     "backend": "nodemon server/server.js",
     "frontend": "webpack-dev-server --open --mode=\"development\"",
     "test": "jest",
@@ -46,6 +46,7 @@
     "react-router-dom": "^5.0.1",
     "react-toastify": "^5.4.1",
     "redux": "^4.0.4",
+    "redux-persist": "^6.0.0",
     "typeface-quicksand": "0.0.71",
     "webpack-cli": "^3.3.8"
   },

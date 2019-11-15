@@ -7,7 +7,7 @@ import "./pages/main.css";
 import {Provider} from "react-redux";
 import configureStore from "./store/configureStore.js";
 import { PersistGate } from "redux-persist/integration/react";
-import {ToastConatiner, toast} from "react-toastify";
+import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const {store, persistor} = configureStore();
@@ -17,7 +17,7 @@ class App extends React.Component {
     render() {
         return(
             <>
-                <ToastConatiner enableMultiContainer position={toast.POSITION.BOTTOM_LEFT} />
+                <ToastContainer enableMultiContainer position={toast.POSITION.BOTTOM_LEFT} />
                 <Provider store={store}>
                     <PersistGate loading={null} persistor={persistor}>
                         <BrowserRouter>
