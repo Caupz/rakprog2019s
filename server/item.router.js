@@ -3,11 +3,9 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Item = require("./item.model.js");
 
-/*
-* Deletes an item from db
-* */
+/* Deletes an item from db */
 
-router.delete("/items/:itemId", (req,res) => {
+router.delete("/:itemId", (req,res) => {
     Item.deleteOne({"_id" : mongoose.Types.ObjectId(req.params.itemId)}, (err) => {
         if(err) {
             console.log("err", err);
@@ -18,7 +16,7 @@ router.delete("/items/:itemId", (req,res) => {
     });
 });
 
-router.post("/items", (req, res) => {
+router.post("/", (req, res) => {
     const props = {
         imgSrc: "google.com",
         title: "phone red",
@@ -37,11 +35,9 @@ router.post("/items", (req, res) => {
     });
 });
 
-/*
-* Returns all items
-* */
+/* Returns all items */
 
-router.get("/items", (req, res) => {
+router.get("/", (req, res) => {
     Item.find({}, function(err, items) {
         if(err) {
             console.log("Error: ", err);
@@ -56,7 +52,7 @@ router.get("/items", (req, res) => {
 * Returns an item
 * */
 
-router.get("/items/:itemId", (req, res) => {
+router.get("/:itemId", (req, res) => {
     console.log("itemId", req.params.itemId);
     Item.findById(req.params.itemId, function(err, item) {
         if(err) {
