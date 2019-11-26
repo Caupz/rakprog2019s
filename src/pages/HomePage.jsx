@@ -5,37 +5,30 @@ import Checkbox from "../components/Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
 import SortDropdown from "../components/SortDropdown.jsx";
-import {getItems} from "../actions/itemsActions.js";
+import {connect} from "react-redux";
+import {getItems} from "../store/actions";
+import {ItemProps} from "./CartPage.jsx";
 
 class HomePage extends React.PureComponent{
+
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired,
+        items: PropTypes.arrayOf(PropTypes.shape(ItemProps)).isRequired,
+    };
 
     constructor(props) {
         super(props);
 
         this.state = {
             sortDirection: 1,
-            items: [],
             allCategories: ["phones", "laptops"],
             selectedCategories: ["phones"]
         };
     }
 
     componentDidMount() {
-        this.fetchItems();
+        this.props.dispatch(getItems());
     }
-
-    fetchItems = () => {
-        getItems()
-            .then(items => {
-                console.log("items", items);
-                this.setState({
-                    items
-                });
-            })
-            .catch(err => {
-                console.log("err", err);
-            });
-    };
 
     handleFilterSelect = (event) => {
         const categoryName = event.target.name;
@@ -60,7 +53,7 @@ class HomePage extends React.PureComponent{
     };
 
     getVisibleItems = () => {
-        return this.state.items
+        return this.props.items
             .filter(item => this.isSelected(item.category))
             .sort((a, b) => {
                 switch(this.state.sortDirection) {
@@ -130,4 +123,10 @@ ItemFilters.propTypes = {
     isSelected: PropTypes.func.isRequired,
 };
 
-export default HomePage;
+const mapStateToProps = (store) => {
+    return {
+        items: store.items,
+    };
+};
+
+export default connect(mapStateToProps)(HomePage);

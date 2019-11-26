@@ -7,15 +7,10 @@ export const ITEM_REMOVED = "ITEM_REMOVED";
 export const USER_UPDATE = "USER_UPDATE";
 export const TOKEN_UPDATE = "TOKEN_UPDATE";
 
-/*const USER_SUCCESS = "USER_SUCCESS";
-const USER_REQUEST = "USER_REQUEST";
-const USER_FAILURE = "USER_FAILURE";
-*/
-
 export const getItems = () => (dispatch, getState) => {
     if(getState().items.length > 0) return null;
 
-    //dispatch(itemsRequest());
+    dispatch(itemsRequest());
     return fetch("/api/v1/items")
         .then(res => {
             return res.json();
@@ -32,6 +27,10 @@ export const getItems = () => (dispatch, getState) => {
 export const itemsSuccess = (items) => ({
     type: ITEMS_SUCCESS,
     payload: items,
+});
+
+export const itemsRequest = () => ({
+    type: ITEMS_REQUEST,
 });
 
 export const itemsFailure = () => ({

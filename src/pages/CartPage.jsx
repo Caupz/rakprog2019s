@@ -49,7 +49,9 @@ class CartPage extends React.PureComponent {
                         <tr>
                             <td></td>
                             <td>
-                                <FancyButton>Vormista ost</FancyButton>
+                                <FancyButton onClick={() => console.log("Vormista ost btn")}>
+                                    Vormista ost
+                                </FancyButton>
                             </td>
                         </tr>
                         </tbody>

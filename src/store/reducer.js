@@ -1,5 +1,5 @@
 import {
-    /*ITEMS_SUCCESS, */ITEM_ADDED, ITEM_REMOVED, USER_UPDATE, TOKEN_UPDATE,
+    /*ITEMS_SUCCESS, */ITEM_ADDED, ITEM_REMOVED, USER_UPDATE, TOKEN_UPDATE, ITEMS_SUCCESS,
 } from "./actions";
 import PropTypes from "prop-types";
 
@@ -15,11 +15,17 @@ const initialState = {
     cart: [
         //item
     ],
-
+    items: [],
 };
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case ITEMS_SUCCESS: {
+            return {
+                ...state,
+                items: action.payload,
+            };
+        }
         case TOKEN_UPDATE: {
             return {
                 ...state,
