@@ -7,14 +7,12 @@ export const UserPropTypes = {
     _id: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
+    cart: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 const initialState = {
     token: null,
     user: null,
-    cart: [
-        //item
-    ],
     items: [],
 };
 
@@ -47,13 +45,20 @@ export const reducer = (state = initialState, action) => {
         case ITEM_ADDED: {
             return {
                 ...state,
-                cart: state.cart.concat([action.payload])
+                user: addItemToCart(state.user, action.payload)
             };
         }
         default: {
             return state;
         }
     }
+};
+
+const addItemToCart = (user, itemId) => {
+    return {
+        ...user,
+        cart: user.cart.concat([itemId])
+    };
 };
 
 const removeItemById = (items, _id) => {

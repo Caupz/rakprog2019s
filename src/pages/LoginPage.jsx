@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {toast} from "react-toastify";
-import {userUpdate} from "../store/actions";
+import {userUpdate, tokenUpdate} from "../store/actions";
 import * as services from "../services";
 
 class LoginPage extends React.PureComponent {
@@ -33,8 +33,9 @@ class LoginPage extends React.PureComponent {
         });
     };
 
-    handleSuccess = ({user}) => {
+    handleSuccess = ({token, user}) => {
         this.props.dispatch(userUpdate(user));
+        this.props.dispatch(tokenUpdate(token));
         this.props.history.push(`/users/${user._id}`);
     };
 
