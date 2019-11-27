@@ -4,6 +4,24 @@ info:
   description: ""
   version: "1.0.0"
 paths:
+  /items:
+    get:
+      operationId: getItems
+      summary: Returns item objects
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Item"
+        403:
+          description: Forbidden
+        500:
+          description: Error
+
   /items/{itemId}:
     get:
       operationId: getItem
@@ -26,6 +44,7 @@ paths:
     get:
       operationId: getUser
       summary: Returns an user object
+      security:
         - bearerAuth: []
       parameters:
         - $ref: "#/components/parameters/userIdParam"
