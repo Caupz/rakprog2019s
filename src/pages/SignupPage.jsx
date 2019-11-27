@@ -3,6 +3,7 @@ import "./form.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import {toast} from "react-toastify";
+import * as services from "../services";
 
 class SignupPage extends React.PureComponent {
     static propTypes = {
@@ -20,17 +21,7 @@ class SignupPage extends React.PureComponent {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log("Submit", e, this.state);
-        fetch("/api/v1/auth/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then( res => {
-            if(!res.ok) throw "signup failed";
-            return res.json();
-        })
+        services.signup(this.state)
         .then(data => {
             console.log("response handleSubmit", data);
             this.props.history.push("/login");
