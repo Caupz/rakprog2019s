@@ -17,8 +17,6 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Item"
-        403:
-          description: Forbidden
         500:
           description: Error
 
@@ -35,8 +33,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Item"
-        403:
-          description: Forbidden
         500:
           description: Error
 
@@ -73,9 +69,27 @@ paths:
         200:
           description: OK
         403:
+          description: Forbidden
+        500:
+          description: err
+    delete:
+      operationId: removeItemFromCart
+      summary: Removes an item from a cart
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/userIdParam"
+        - $ref: "#/components/parameters/itemIdParam"
+      responses:
+        200:
+          description: OK
+        403:
+          description: Forbidden
+        500:
+          description:err
 
 
-  /api/v1/login:
+  /auth/login:
     post:
       operationId: login
       summary: User signs in
@@ -115,7 +129,7 @@ paths:
         401:
           description: unauthorized
 
-  /api/v1/signup:
+  /auth/signup:
     post:
       operationId: signup
       summary: User registers an account
