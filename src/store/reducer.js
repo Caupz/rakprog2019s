@@ -39,7 +39,7 @@ export const reducer = (state = initialState, action) => {
         case ITEM_REMOVED: {
             return {
                 ...state,
-                cart: removeItemById(state.cart, action.payload)
+                user: removeItemFromCart(state.user, action.payload)
             };
         }
         case ITEM_ADDED: {
@@ -54,17 +54,28 @@ export const reducer = (state = initialState, action) => {
     }
 };
 
+const removeItemFromCart = (user, itemId) => {
+    const index = user.cart.findIndex(cartId => cartId === itemId);
+    if(index === -1) return user;
+    const copy = user.cart.slice();
+    copy.splice(index, 1);
+    return {
+        ...user,
+        cart: copy
+    };
+};
+
 const addItemToCart = (user, itemId) => {
     return {
         ...user,
         cart: user.cart.concat([itemId])
     };
 };
-
+/*
 const removeItemById = (items, _id) => {
     const index = items.findIndex(item => item._id === _id);
     if(index === -1) return items;
     const copy = items.slice();
     copy.splice(index, 1);
     return copy;
-};
+};*/
