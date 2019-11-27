@@ -27,7 +27,10 @@ class SignupPage extends React.PureComponent {
             },
             body: JSON.stringify(this.state)
         })
-        .then(res => res.json())
+        .then( res => {
+            if(!res.ok) throw "signup failed";
+            return res.json();
+        })
         .then(data => {
             console.log("response handleSubmit", data);
             this.props.history.push("/login");

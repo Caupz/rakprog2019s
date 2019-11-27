@@ -4,9 +4,31 @@
 	font-family: 'Quicksand', Verdana, Arial;
 }
 
+body {
+    margin: 0;
+}
+
 a {
 	color: #e01e62;
 	text-decoration: none;
+}
+
+.hero {
+    background: url('https://gtav.ee/gtav.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.product-settings {
+    display: flex;
+}
+
+.product-settings > div {
+    flex: 1;
+}
+
+.product-settings > div:last-child {
+    text-align: right;
 }
 
 .products{
@@ -39,6 +61,8 @@ a {
 .container {
 	width: 1024px;
 	margin: 0 auto;
+    padding: 0 32px;
+    background: #FFF;
 }
 
 .header {

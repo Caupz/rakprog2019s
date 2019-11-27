@@ -78,17 +78,19 @@ class HomePage extends React.PureComponent{
         return (
             <>
                 <div className={"container"}>
-                    <ItemFilters
-                        allCategories={this.state.allCategories}
-                        handleDropdown={this.handleFilterSelect}
-                        isSelected={this.isSelected}
-                    />
-                    <div className={"items-settings"}>
-                        <div>Items found {items.length} {this.state.selectedCategories.join(", ")}</div>
-                        <SortDropdown
-                            direction={this.state.sortDirection}
-                            onChange={this.handleSortDropdown}
+                    <div className={"product-settings"}>
+                        <ItemFilters
+                            allCategories={this.state.allCategories}
+                            handleDropdown={this.handleFilterSelect}
+                            isSelected={this.isSelected}
                         />
+                        <div className={"items-settings"}>
+                            <div>Items found {items.length} {this.state.selectedCategories.join(", ")}</div>
+                            <SortDropdown
+                                direction={this.state.sortDirection}
+                                onChange={this.handleSortDropdown}
+                            />
+                        </div>
                     </div>
                     <ItemList items={items}/>
                     <Footer/>

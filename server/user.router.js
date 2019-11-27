@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require("./user.model.js");
 const Item = require("./item.model.js");
+const {authMiddleware} = require("./middlewares.js");
 
 router.param("userId", (req, res, next, userId) => {
     User.findById(userId, (err, user) => {
