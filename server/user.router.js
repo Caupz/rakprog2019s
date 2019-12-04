@@ -74,8 +74,9 @@ function handleError(err, res) {
     res.send(500);
 }
 
-router.post("/:userId/checkout", authMiddleware, (req, res) => {
-    console.log("uus consolelog", req.body);
+router.post("/:userId/checkout", authMiddleware, async (req, res) => {
+    const {error, amount} = await req.user.getCartAmount();
+    console.log("uus consolelog", {error, amount});
     res.send(200);
 });
 
