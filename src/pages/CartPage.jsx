@@ -10,6 +10,7 @@ import {toast} from "react-toastify";
 import * as selectors from "../store/selectors";
 import * as services from "../services";
 import Modal from "../components/Modal";
+import Stripe from "../components/Stripe";
 
 class CartPage extends React.PureComponent {
     static propTypes = {
@@ -75,7 +76,7 @@ class CartPage extends React.PureComponent {
         return (
             <>
                 <Modal open={this.state.isModalOpen} onClose={this.handleModal}>
-                    Modali sisu
+                    <Stripe></Stripe>
                 </Modal>
                 <div className={"container"}>
                 <div className={"spacer"}>
