@@ -74,4 +74,9 @@ function handleError(err, res) {
     res.send(500);
 }
 
+router.post("/:userId/checkout", authMiddleware, (req, res) => {
+    console.log("uus consolelog", req.body);
+    res.send(200);
+});
+
 module.exports = router;
