@@ -53,7 +53,6 @@ router.get("/", (req, res) => {
 * */
 
 router.get("/:itemId", (req, res) => {
-    console.log("itemId", req.params.itemId);
     Item.findById(req.params.itemId, function(err, item) {
         if(err) {
             console.log("Error: ", err);

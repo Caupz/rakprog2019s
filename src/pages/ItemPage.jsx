@@ -23,7 +23,7 @@ class ItemPage extends React.PureComponent{
     }
 
     fetchItem = () => {
-        services.getItem({itemId: this.props.match.params.itemId})
+        services.getItem(this.props.match.params.itemId)
             .then(item => {
                 this.setState({
                     ...item
