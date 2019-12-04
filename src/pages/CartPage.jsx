@@ -76,7 +76,7 @@ class CartPage extends React.PureComponent {
         return (
             <>
                 <Modal open={this.state.isModalOpen} onClose={this.handleModal}>
-                    <Stripe></Stripe>
+                    <Stripe sum={(sum+tax)}></Stripe>
                 </Modal>
                 <div className={"container"}>
                 <div className={"spacer"}>
