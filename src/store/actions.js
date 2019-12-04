@@ -98,3 +98,17 @@ export const tokenUpdate = token => ({
     type: TOKEN_UPDATE,
     payload: token
 });
+
+export const refreshUser = () => (dispatch, getState) => {
+    const store = getState();
+    const userId = selectors.getUserId(store);
+    const token = selectors.getToken(store);
+
+    services.getUser({userId, token})
+        .then(user => {
+            dispatch(userUpdate(user));
+        })
+        .catch(err => {
+            console.log("error", err);
+        });
+};

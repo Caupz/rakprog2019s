@@ -70,13 +70,17 @@ class CartPage extends React.PureComponent {
         console.log("handle modal");
     };
 
+    handleSubmit = () => {
+        this.handleModal();
+    };
+
     render() {
         const {sum, tax} = this.calcNumbers();
 
         return (
             <>
                 <Modal open={this.state.isModalOpen} onClose={this.handleModal}>
-                    <Stripe sum={(sum+tax)}></Stripe>
+                    <Stripe sum={(sum+tax)} onSubmit={this.handleSubmit}></Stripe>
                 </Modal>
                 <div className={"container"}>
                 <div className={"spacer"}>
@@ -86,12 +90,13 @@ class CartPage extends React.PureComponent {
                             rows={this.state.cartItems}
                         />
                     </div>
+                    {this.state.cartItems.length > 0 &&
                     <div className={"box cart__summary"}>
                         <table>
                             <tbody>
-                                <tr><td>Vahesumma</td><td>{sum} €</td></tr>
-                                <tr><td>Maksud</td><td>{tax} €</td></tr>
-                                <tr><td>Kokku</td><td>{tax + sum} €</td></tr>
+                            <tr><td>Vahesumma</td><td>{sum} €</td></tr>
+                            <tr><td>Maksud</td><td>{tax} €</td></tr>
+                            <tr><td>Kokku</td><td>{tax + sum} €</td></tr>
                             <tr>
                                 <td></td>
                                 <td>
@@ -103,6 +108,8 @@ class CartPage extends React.PureComponent {
                             </tbody>
                         </table>
                     </div>
+                    }
+
                 </div>
                 </div>
             </>
