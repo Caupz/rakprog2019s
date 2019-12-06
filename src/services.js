@@ -9,6 +9,15 @@ export const getItems = () => {
         });
 };
 
+export const getUsers = () => {
+    return fetch(`${basePath}/users/`)
+        .then(res => {
+            if(!res.ok) throw "getUsers failed";
+
+            return res.json();
+        });
+};
+
 export const getItem = (itemId) => {
     return fetch(`${basePath}/items/${itemId}`)
         .then(res => {

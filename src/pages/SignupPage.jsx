@@ -14,8 +14,27 @@ class SignupPage extends React.PureComponent {
         super(props);
         this.state = {
             password: "",
-            email:""
+            email:"",
+            usedEmails: []
         };
+    }
+
+    componentDidMount() {
+        services.getUsers()
+            .then(data => {
+                console.log("componentDidCount signup", data);
+
+                let emails = [];
+                for(let i = 0; i < data.length; i++) {
+                    emails.push(data[i].email);
+                }
+                this.setState({usedEmails: emails});
+                console.log("signup emails", data);
+            })
+            .catch(err => {
+                console.log("error", err);
+            });
+
     }
 
     handleSubmit = (e) => {
@@ -66,6 +85,13 @@ class SignupPage extends React.PureComponent {
                         <input className={"btn btn--fancy"} type="submit" value="Create" />
                     </p>
                     <Link to={"/login"}>Already registered? Login</Link>
+                    <br/>
+                    Kasutatud emailid:
+                    {
+                        this.state.usedEmails.map( email => {
+                            return <p key={email}>{email}</p>;
+                        })
+                    }
                 </form>
             </div>
             </div>

@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("./user.model.js");
 const Item = require("./item.model.js");
 const {authMiddleware} = require("./middlewares.js");
+const stripe = require("stripe")(process.env.SECRET_STRIPE_KEY);
 
 router.param("userId", (req, res, next, userId) => {
     User.findById(userId, (err, user) => {
@@ -53,6 +54,7 @@ router.delete("/:userId/cart/:itemId", (req, res) => {
 
 /* Gets all users */
 router.get("/", (req,res) => {
+    console.log("gets all users");
     User.find({}, (err, docs) => {
         if(err) return handleError(err, res);
         res.status(200).json(docs);
@@ -86,6 +88,14 @@ router.post("/:userId/checkout", authMiddleware, async (req, res) => {
             return req.user.clearCart();
         })
         .then(() => {
+            return stripe.charges.create({
+                amount: amount * 100,
+                currency: "eur",
+                source: req.body.id,
+            });
+        })
+        .then(stripeResponse => {
+            console.log("stripe res", stripeResponse);
             res.send(200);
         })
         .catch(() => {
