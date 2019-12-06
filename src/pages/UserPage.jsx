@@ -6,7 +6,7 @@ import {userUpdate, tokenUpdate} from "../store/actions";
 import protectedRedirect from "../components/protectedRedirect.jsx";
 import { UserPropTypes } from "../store/reducer.js";
 import * as selectors from "../store/selectors";
-import * as services from "../store/services";
+import * as services from "../services";
 
 class UserPage extends React.PureComponent {
     static propTypes = {
@@ -22,7 +22,7 @@ class UserPage extends React.PureComponent {
 
     componentDidMount() {
         const {userId, token} = this.props;
-        services.getUserPayments({userId, token})
+        services.getPayments({userId, token})
             .then(docs => {
                 console.log("userpage did mount docs", docs);
                 this.setState({
