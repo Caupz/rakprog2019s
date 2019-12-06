@@ -26,3 +26,11 @@ input {
     padding: 1px;
     border-radius: 50%;
 }
+
+.payment-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid #999999;
+}

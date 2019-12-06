@@ -4,6 +4,7 @@ const User = require("./user.model.js");
 const Item = require("./item.model.js");
 const {authMiddleware} = require("./middlewares.js");
 const stripe = require("stripe")(process.env.SECRET_STRIPE_KEY);
+const Payment = require("./payments.model");
 
 router.param("userId", (req, res, next, userId) => {
     User.findById(userId, (err, user) => {
@@ -76,10 +77,21 @@ function handleError(err, res) {
     res.send(500);
 }
 
+router.get("/:userId/payments", authMiddleware, (req,res) => {
+    Payment.getUserPayments(req.user._id)
+        .then(docs => {
+            res.send(docs);
+        })
+        .catch(err => {
+            console.og("user payments err", err);
+        })
+});
+
 router.post("/:userId/checkout", authMiddleware, async (req, res) => {
     const {error, amount} = await req.user.getCartAmount();
 
     if(error) {
+        console.log("CHECKOUT err", error, amount);
         return res.send(500);
     }
 
@@ -98,7 +110,8 @@ router.post("/:userId/checkout", authMiddleware, async (req, res) => {
             console.log("stripe res", stripeResponse);
             res.send(200);
         })
-        .catch(() => {
+        .catch((err) => {
+            console.log("checkout error", err);
             res.send(500);
         });
 });
