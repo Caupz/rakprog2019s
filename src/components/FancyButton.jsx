@@ -5,7 +5,7 @@ import "./fancybutton.css";
 
 const FancyButton = ({children, onClick}) => (
     <div className={"btn btn--fancy"} onClick={onClick}>
-        <div>
+        <div className={"fancy-inner-container"}>
             {children}
         </div>
         <FaAngleRight/>
