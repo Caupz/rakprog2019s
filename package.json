@@ -51,7 +51,7 @@
     "redux-persist": "^6.0.0",
     "stripe": "^7.14.0",
     "typeface-quicksand": "0.0.71",
-    "webpack-cli": "^3.3.8"
+    "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
@@ -82,7 +82,7 @@
     "redux-thunk": "^2.3.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.8",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.8.0"
   },
   "keywords": []
